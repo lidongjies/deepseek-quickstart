@@ -1,98 +1,17 @@
-# AI 全栈开发快速入门指南
-
-
-## 拉取代码
-
-你可以通过克隆此仓库到你的本地机器来开始：
-
-```shell
-git clone https://github.com/DjangoPeng/deepseek-quickstart.git
-```
-
-然后导航至目录，并按照单个模块的指示开始操作。
+# AI 全栈开发练习仓库
 
 ## 搭建开发环境
 
-本项目使用 Python v3.13 开发，完整 Python 依赖软件包见[requirements.txt](requirements.txt)。
+本项目使用 Python v3.12 开发，使用 uv 管理 Python 环境，使用 Jupyter Lab Desktop 作为交互式开发环境。
 
 关键依赖的官方文档如下：
 
-- Python 环境管理 [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/)
-- Python 交互式开发环境 [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
+- Python 环境管理 [uv](https://docs.astral.sh/uv/)
+- Python 交互式开发环境 [Jupyter Lab Desktop](https://github.com/jupyterlab/jupyterlab-desktop)
 - [OpenAI Python SDK](https://github.com/openai/openai-python?tab=readme-ov-file#installation) 
-
-
-*⚠️注意：DeepSeek API 使用与 OpenAI 兼容的 API 格式，通过修改配置，您可以使用 OpenAI SDK 来访问 DeepSeek API，或使用与 OpenAI API 兼容的软件。*
-
-
-
-**以下是详细的安装指导（以 Ubuntu 操作系统为例）**：
-
-### 安装 Miniconda
-
-```shell
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm -rf ~/miniconda3/miniconda.sh
-```
-
-安装完成后，建议新建一个 Python 虚拟环境，命名为 `deepseek`。
-
-```shell
-conda create -n deepseek python=3.13
-
-# 激活环境
-conda activate deepseek 
-```
-
-之后每次使用需要激活此环境。
-
-
-### 安装 Python 依赖软件包
-
-```shell
-pip install -r requirements.txt
-```
-
-### 配置 DeepSeek API Key
-
-根据你使用的命令行工具，在 `~/.bashrc` 或 `~/.zshrc` 中配置 `DEEPSEEK_API_KEY` 环境变量：
-
-```shell
-export DEEPSEEK_API_KEY="xxxx"
-```
-
-### 安装和配置 Jupyter Lab
-
-上述开发环境安装完成后，使用 Miniconda 安装 Jupyter Lab：
-
-```shell
-conda install -c conda-forge jupyterlab
-```
-
-使用 Jupyter Lab 开发的最佳实践是后台常驻，下面是相关配置（以 root 用户为例）：
-
-```shell
-# 生成 Jupyter Lab 配置文件，
-jupyter lab --generate-config
-```
-
-打开上面执行输出的`jupyter_lab_config.py`配置文件后，修改以下配置项：
-
-```python
-c.ServerApp.allow_root = True # 非 root 用户启动，无需修改
-c.ServerApp.ip = '*'
-```
-
-使用 nohup 后台启动 Jupyter Lab
-```shell
-$ nohup jupyter lab --port=8000 --NotebookApp.token='替换为你的密码' --notebook-dir=./ &
-```
-
-
-Jupyter Lab 输出的日志将会保存在 `nohup.out` 文件（已在 .gitignore中过滤）。
-
+- [Milvus Docker 安装](https://milvus.io/docs/v2.2.x/install_standalone-docker.md)
+- [Milvus GUI](https://github.com/zilliz/attu)
+  - `docker run -p 8000:3000 -e MILVUS_URL={your milvus host}:19530 zilliz/attu:v2.5`
 
 ## 贡献
 
