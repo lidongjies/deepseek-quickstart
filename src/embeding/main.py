@@ -3,15 +3,10 @@ from glob import glob
 from dotenv import load_dotenv
 from pymilvus import MilvusClient
 from tqdm import tqdm
-from openai import OpenAI
 from pymilvus import model as milvus_model
 
 # Load environment variables from .env file
 load_dotenv()
-
-# Get DEEPSEEK_API_KEY from environment variables
-DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
-
 
 def main():
     text_lines = []
@@ -23,11 +18,6 @@ def main():
         
     print(len(text_lines))
     
-    deepseek_client = OpenAI(
-        api_key=DEEPSEEK_API_KEY,
-        base_url="https://api.deepseek.com/v1",  # DeepSeek API 的基地址
-    )
-    
     # 获取embedding维度
     embedding_model = milvus_model.DefaultEmbeddingFunction()
     test_embedding = embedding_model.encode_queries(["This is a test"])[0]
@@ -38,8 +28,8 @@ def main():
         uri="http://127.0.0.1:19530",
     )
     
-    # 定义collection名称
-    collection_name = "deepseek_rag"
+    # 获取collection名称
+    collection_name = os.getenv("COLLECTION_NAME")
     
     # 如果collection存在，则删除
     if milvus_client.has_collection(collection_name):
