@@ -3,6 +3,29 @@ revision = 1
 requires-python = ">=3.12"
 
 [[package]]
+name = "ai-full-stack-develop"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "openai" },
+    { name = "pymilvus", extra = ["model"] },
+    { name = "python-dotenv" },
+    { name = "requests" },
+    { name = "torch" },
+    { name = "tqdm" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "openai", specifier = ">=1.83.0" },
+    { name = "pymilvus", extras = ["model"], specifier = ">=2.5.10" },
+    { name = "python-dotenv", specifier = ">=1.1.0" },
+    { name = "requests", specifier = ">=2.32.3" },
+    { name = "torch", specifier = ">=2.7.0" },
+    { name = "tqdm", specifier = ">=4.67.1" },
+]
+
+[[package]]
 name = "annotated-types"
 version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -88,29 +111,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/cc/c7/eed8f27100517e8c0e6b923d5f0845d0cb99763da6fdee00478f91db7325/coloredlogs-15.0.1.tar.gz", hash = "sha256:7c991aa71a4577af2f82600d8f8f3a89f936baeaf9b50a9c197da014e5bf16b0", size = 278520 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a7/06/3d6badcf13db419e25b07041d9c7b4a2c331d3f4e7134445ec5df57714cd/coloredlogs-15.0.1-py2.py3-none-any.whl", hash = "sha256:612ee75c546f53e92e70049c9dbfcc18c935a2b9a53b66085ce9ef6a6e5c0934", size = 46018 },
-]
-
-[[package]]
-name = "deepseek-quickstart"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "openai" },
-    { name = "pymilvus", extra = ["model"] },
-    { name = "python-dotenv" },
-    { name = "requests" },
-    { name = "torch" },
-    { name = "tqdm" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "openai", specifier = ">=1.83.0" },
-    { name = "pymilvus", extras = ["model"], specifier = ">=2.5.10" },
-    { name = "python-dotenv", specifier = ">=1.1.0" },
-    { name = "requests", specifier = ">=2.32.3" },
-    { name = "torch", specifier = ">=2.7.0" },
-    { name = "tqdm", specifier = ">=4.67.1" },
 ]
 
 [[package]]
